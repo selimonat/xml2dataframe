@@ -6,7 +6,8 @@ class XML2DataFrame:
     #
     #Usage:
     #xml2df = XML2DataFrame(xml_path)
-    #xml_dataframe = xml2df.process_data()
+    #xml_dataframe = xml2df.process_data(filter), where filter is a string for 
+    #a specific tag name. 
     
     def __init__(self, xml_path):
         #Creates an instance
@@ -15,8 +16,9 @@ class XML2DataFrame:
         xml_data  = ET.tostring(xml_data)
         self.root = ET.XML(xml_data)
 
-    def process_data(self,tag):
-        #Filters xml elements with tag TAG and parses it into a DataFrame.        
+    def process_data(self,tag="*"):
+        #Filters xml elements with tag TAG and parses it into a DataFrame.
+        #By default no filtering is applied
         structure_data = self.parse_root(self.root.findall(tag))
         return pd.DataFrame(structure_data)
     
