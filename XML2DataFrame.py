@@ -20,6 +20,7 @@ class XML2DataFrame:
         #Filters xml elements with tag TAG and parses it into a DataFrame.
         #By default no filtering is applied
         structure_data = self.parse_root(self.root.findall(tag))
+        #structure_data  is a list of dict
         return pd.DataFrame(structure_data)
     
     def parse_root(self, root):
